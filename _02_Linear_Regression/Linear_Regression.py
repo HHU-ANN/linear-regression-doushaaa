@@ -12,7 +12,7 @@ except ImportError as e:
     import numpy as np
 
 def ridge(data):
-    a1=0.00173
+    a1=0.00917
     x,y=read_data()
     T=np.eye(x.transpose().dot(x).shape[1])
     w=np.linalg.inv(x.transpose().dot(x)+a1*T).dot(x.transpose()).dot(y)
@@ -22,16 +22,19 @@ def ridge(data):
 def lasso(data):
    x,y=read_data()
    w=np.zeros((x.shape[1],1))
-   a = 0.00000000009299999999999999999
+   a = 0.00000000047
    print(a)
-   for i in range(15):
-    dw=x.transpose().dot(x.dot(w)-y)-a*np.sign(w)
-    w=w-a*dw
+   dw=x.transpose().dot(x.dot(w)-y)-a*np.sign(w)
+   w=w-a*dw
    ypre=data.dot(w)
    print(ypre)
    sum=0
-   average=np.mean(ypre)
+   for i in range((y.shape[0])):
+       sum=sum+ypre[i]
+   average=sum/(y.shape[0])
    return average
+
+
 
 
 def read_data(path='./data/exp02/'):
