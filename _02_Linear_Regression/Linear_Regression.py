@@ -22,16 +22,16 @@ def ridge(data):
 def lasso(data):
    x,y=read_data()
    w=np.zeros((x.shape[1],1))
-   a = 0.00000000047
-   dw=x.transpose().dot(x.dot(w)-y)-a*np.sign(w)
-   w=w-a*dw
+   a = 0.00000000009299999999999999999
+   print(a)
+   for i in range(15):
+    dw=x.transpose().dot(x.dot(w)-y)-a*np.sign(w)
+    w=w-a*dw
    ypre=data.dot(w)
+   print(ypre)
    sum=0
-   for i in range((y.shape[0])):
-       sum=sum+ypre[i]
-   average=sum/(y.shape[0])
+   average=np.mean(ypre)
    return average
-
 
 
 
