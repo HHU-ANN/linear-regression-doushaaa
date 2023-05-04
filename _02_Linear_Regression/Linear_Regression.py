@@ -22,7 +22,6 @@ def ridge(data):
 def lasso(data):
    x,y=read_data()
    w=np.zeros((x.shape[1],1))
-
    a = 0.00000000009299999999999999999
    print(a)
    for i in range(15):
