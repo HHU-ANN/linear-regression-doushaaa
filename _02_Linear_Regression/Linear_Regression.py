@@ -115,7 +115,7 @@ def lasso(data):
     y_data = np.dot(data, w)
     return y_data
 
-def read_data(path='D:/Git/hello-world-doushaaa/data/exp02/'):
+def read_data(path='./data/exp02/'):
     x = np.load(path + 'X_train.npy')
     y = np.load(path + 'y_train.npy')
     return x, y
